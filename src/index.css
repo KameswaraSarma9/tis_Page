@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: #ffb81c;
+  --color-navy: #0f1f4b;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --ink: #0f1f4b;
+  --muted: #51607f;
+  --line: #d9dfec;
+}
+
+[data-theme="dark"] {
+  --bg: #0b1430;
+  --surface: #121e45;
+  --ink: #eef1fa;
+  --muted: #9aa7c7;
+  --line: #24325e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* the native cursor is only hidden when the custom ring is mounted */
+.has-cursor,
+.has-cursor a,
+.has-cursor button {
+  cursor: none;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}
